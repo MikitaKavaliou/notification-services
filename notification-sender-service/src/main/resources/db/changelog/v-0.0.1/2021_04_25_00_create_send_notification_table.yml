@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2021-04-25-00
+      author: Mikita_Kavaliou
+      comment: Create table send_notification
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: address
+                  type: VARCHAR(255)
+              - column:
+                  name: send_status
+                  type: VARCHAR(255)
+              - column:
+                  name: send_type
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+            tableName: send_notification

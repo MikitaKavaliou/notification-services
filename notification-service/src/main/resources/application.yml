@@ -1,0 +1,26 @@
+server:
+  servlet:
+    context-path: /api
+  port: 8081
+  db:
+    name: notification
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  data:
+    mongodb:
+      uri: mongodb://root:root@localhost:27017
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    queue:
+      producer:
+        name: notificationresponsequeue
+        exchange: notificationresponsefanout
+      consumer:
+        name: notificationrequestqueue
+        exchange: notificationrequestfanout
+mongock:
+  change-logs-scan-package: by.kovaliov.notificationservice.config.migration

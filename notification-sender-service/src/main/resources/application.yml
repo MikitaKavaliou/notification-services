@@ -1,0 +1,32 @@
+server:
+  servlet:
+    context-path: /api
+  port: 8082
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:mysql://localhost:3306/notification_sender
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  liquibase:
+    url: jdbc:mysql://localhost:3306/notification_sender?createDatabaseIfNotExist=true
+    user: root
+    password: root
+    change-log: classpath:db/changelog/changelog.yml
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    queue:
+      producer:
+        name: notificationrequestqueue
+        exchange: notificationrequestfanout
+      consumer:
+        name: notificationresponsequeue
+        exchange: notificationresponsefanout
