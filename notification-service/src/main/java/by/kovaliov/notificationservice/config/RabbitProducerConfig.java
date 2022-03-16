@@ -31,7 +31,7 @@ public class RabbitProducerConfig {
 
   @Bean
   public Binding producersBinding(@Qualifier("queueToProduce") Queue queueToProduce,
-                                  @Qualifier("exchangeToProduce")FanoutExchange exchangeToProduce) {
+                                  @Qualifier("exchangeToProduce") FanoutExchange exchangeToProduce) {
     return BindingBuilder.bind(queueToProduce).to(exchangeToProduce);
   }
 }

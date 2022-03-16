@@ -7,7 +7,7 @@ Project contains 2 services communicating with each other using AMQP implementat
 ## Quick Start
 
 * Clone repository
-* Run ```docker-compose up``` command to launch required container
+* Run ```docker-compose up``` command to launch required containers
 * Launch microservices
 * Download postman request collection https://www.getpostman.com/collections/af23f3466939864cba78
 * Send a predefined request with the name ```Create new send-notification with type SMS```. Server responds with code 

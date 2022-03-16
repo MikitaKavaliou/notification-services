@@ -1,8 +1,6 @@
 package by.kovaliov.notificationservice.repository;
 
 
-import java.util.List;
-
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import by.kovaliov.notificationservice.model.Notification;

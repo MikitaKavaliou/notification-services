@@ -1,7 +1,5 @@
 package by.kovaliov.notificationsenderservice.service.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +15,9 @@ import by.kovaliov.notificationsenderservice.service.NotificationSenderService;
 import by.kovaliov.notificationsenderservice.service.QueueConsumerService;
 import by.kovaliov.notificationsenderservice.service.SendNotificationService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class QueueConsumerServiceImpl implements QueueConsumerService {
@@ -25,8 +25,6 @@ public class QueueConsumerServiceImpl implements QueueConsumerService {
   private final NotificationSenderService notificationSenderServiceEmail;
   private final NotificationSenderService notificationSenderServiceSms;
   private final SendNotificationService sendNotificationService;
-
-  private static final Logger LOGGER = LoggerFactory.getLogger(QueueConsumerServiceImpl.class);
 
   @Transactional
   @Override
@@ -40,10 +38,10 @@ public class QueueConsumerServiceImpl implements QueueConsumerService {
         sendNotification(userIdNotificationDto, sendNotification);
       } else {
         updateStatus(sendNotification, SendNotificationStatus.FAILED);
-        LOGGER.info("Notification for user with id={} not found", sendNotification.getUserId());
+        log.info("Notification for user with id={} not found", sendNotification.getUserId());
       }
     } catch (JsonProcessingException e) {
-      LOGGER.error("Error parsing json");
+      log.error("Error parsing json");
     }
   }
 
@@ -62,7 +60,6 @@ public class QueueConsumerServiceImpl implements QueueConsumerService {
   }
 
   private NotificationSenderService selectSenderByType(SendNotificationType sendNotificationType) {
-    return
-        sendNotificationType == SendNotificationType.EMAIL ? notificationSenderServiceEmail : notificationSenderServiceSms;
+    return sendNotificationType == SendNotificationType.EMAIL ? notificationSenderServiceEmail : notificationSenderServiceSms;
   }
 }

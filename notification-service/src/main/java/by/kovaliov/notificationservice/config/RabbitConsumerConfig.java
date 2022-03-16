@@ -36,7 +36,7 @@ public class RabbitConsumerConfig {
 
   @Bean
   public Binding consumersBinding(@Qualifier("queueToConsume") Queue queueToConsume,
-                                  @Qualifier("exchangeToConsume")FanoutExchange exchangeToConsume) {
+                                  @Qualifier("exchangeToConsume") FanoutExchange exchangeToConsume) {
     return BindingBuilder.bind(queueToConsume).to(exchangeToConsume);
   }
 

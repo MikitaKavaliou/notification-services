@@ -10,8 +10,6 @@ public interface NotificationService {
   List<Notification> findAll();
 
   Notification save(Notification notification);
-//
-//  List<Notification> findNotificationByUserId(long userId);
 
   Notification pollNotificationByUserId(long userId);
 }

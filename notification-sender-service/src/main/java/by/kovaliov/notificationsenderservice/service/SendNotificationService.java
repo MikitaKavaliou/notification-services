@@ -3,7 +3,6 @@ package by.kovaliov.notificationsenderservice.service;
 import java.util.List;
 
 import by.kovaliov.notificationsenderservice.model.SendNotification;
-import by.kovaliov.notificationsenderservice.model.SendNotificationStatus;
 
 public interface SendNotificationService {
 

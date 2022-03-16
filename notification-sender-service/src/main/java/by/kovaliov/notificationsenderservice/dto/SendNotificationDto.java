@@ -1,7 +1,5 @@
 package by.kovaliov.notificationsenderservice.dto;
 
-import java.util.List;
-
 import by.kovaliov.notificationsenderservice.model.SendNotification;
 import lombok.AllArgsConstructor;
 import lombok.Data;
